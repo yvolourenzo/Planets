@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.jpg" type="image/jpeg">
+    <title>Missões Espaciais - Quiz de Curiosidades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px 0;
+            width: 100%;
+        }
+
+        .status {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-grow: 1;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card button {
+            background-color: #073ef3;
+            border: none;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .card button.correct {
+            background-color: green;
+        }
+
+        .card button.wrong {
+            background-color: red;
+        }
+
+        .card button:hover {
+            background-color: #0044cc;
+        }
+
+        .home-button {
+            margin: 20px 0;
+        }
+
+        .home-button button {
+            background-color: #073ef3;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .home-button button:hover {
+            background-color: #0044cc;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 10px 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Missões Espaciais - Quiz de Curiosidades</h1>
+        <p>Acumule 6 acertos para ganhar ou 10 erros para perder!</p>
+    </header>
+    <div class="status">
+        <p>Acertos: <span id="correct-count">0</span></p>
+        <p>Erros: <span id="wrong-count">0</span></p>
+    </div>
+    <div class="container" id="card-container">
+        <!-- Card será adicionado aqui dinamicamente -->
+    </div>
+    <div class="home-button">
+        <button onclick="goHome()">Voltar para Home</button>
+    </div>
+    <footer>
+        <p>&copy; 2024 Exploração Espacial</p>
+    </footer>
+    <script>
+        const curiosities = [
+            { question: "Qual é o planeta mais próximo do Sol?", answer: "Mercúrio" },
+            { question: "Qual planeta é conhecido como o Planeta Vermelho?", answer: "Marte" },
+            { question: "Qual planeta é famoso por seus anéis?", answer: "Saturno" },
+            { question: "Qual é o maior planeta do Sistema Solar?", answer: "Júpiter" },
+            { question: "Qual planeta é conhecido como o Planeta Azul?", answer: "Terra" },
+            { question: "Qual é o planeta mais distante do Sol?", answer: "Netuno" },
+            { question: "Qual planeta tem o dia mais longo?", answer: "Vênus" },
+            { question: "Qual planeta é conhecido por ter ventos extremamente fortes?", answer: "Netuno" },
+            { question: "Qual é o planeta mais quente do Sistema Solar?", answer: "Vênus" },
+            { question: "Qual planeta tem uma grande mancha vermelha?", answer: "Júpiter" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctCount = 0;
+        let wrongCount = 0;
+
+        function checkAnswer(button, answer) {
+            const correctAnswer = curiosities[currentQuestionIndex].answer;
+            const buttons = button.parentElement.querySelectorAll('button');
+            buttons.forEach(btn => {
+                if (btn.innerText === correctAnswer) {
+                    btn.classList.add('correct');
+                } else {
+                    btn.classList.add('wrong');
+                }
+                btn.disabled = true;
+            });
+
+            if (answer === correctAnswer) {
+                correctCount++;
+                document.getElementById('correct-count').innerText = correctCount;
+            } else {
+                wrongCount++;
+                document.getElementById('wrong-count').innerText = wrongCount;
+            }
+            currentQuestionIndex++;
+            setTimeout(() => {
+                if (correctCount === 6) {
+                    alert("Você ganhou! Acertou 6 curiosidades.");
+                    resetGame();
+                } else if (wrongCount === 10) {
+                    alert("Você perdeu! Errou 10 curiosidades.");
+                    resetGame();
+                } else if (currentQuestionIndex < curiosities.length) {
+                    showNextQuestion();
+                } else {
+                    alert("Fim do quiz!");
+                    resetGame();
+                }
+            }, 1000);
+        }
+
+        function resetGame() {
+            currentQuestionIndex = 0;
+            correctCount = 0;
+            wrongCount = 0;
+            document.getElementById('correct-count').innerText = correctCount;
+            document.getElementById('wrong-count').innerText = wrongCount;
+            showNextQuestion();
+        }
+
+        function showNextQuestion() {
+            const container = document.getElementById('card-container');
+            container.innerHTML = '';
+            if (currentQuestionIndex < curiosities.length) {
+                const curiosity = curiosities[currentQuestionIndex];
+                container.appendChild(createCard(curiosity));
+            }
+        }
+
+        function createCard(curiosity) {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            const question = document.createElement('p');
+            question.innerText = curiosity.question;
+            card.appendChild(question);
+
+            const options = ['Mercúrio', 'Vênus', 'Terra', 'Marte', 'Júpiter', 'Saturno', 'Urano', 'Netuno'];
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.onclick = () => checkAnswer(button, option);
+                card.appendChild(button);
+            });
+
+            return card;
+        }
+
+        function goHome() {
+            window.location.href = "index.html"; // Atualize o link se necessário
+        }
+
+        document.addEventListener('DOMContentLoaded', showNextQuestion);
+    </script>
+</body>
+</html>

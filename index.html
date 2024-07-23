@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.jpg" type="image/jpeg">
+    <title>Exploração Espacial</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .animation-container {
+            width: 100%;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #1a1a1a, #000);
+            position: relative;
+        }
+
+        .planet, .sun {
+            border-radius: 50%;
+            position: absolute;
+            animation: orbit 10s infinite linear;
+        }
+
+        .sun {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #f39c12, #d35400);
+            animation: none;
+        }
+
+        .mercury { width: 30px; height: 30px; background: radial-gradient(circle, #b5b5b5, #757575); animation-duration: 4s; top: 50%; left: 30%; }
+        .venus { width: 60px; height: 60px; background: radial-gradient(circle, #e1c699, #c09d55); animation-duration: 6s; top: 50%; left: 35%; }
+        .earth { width: 70px; height: 70px; background: radial-gradient(circle, #2a9df4, #1c7bd6), radial-gradient(circle at 30% 30%, #34c924, transparent 40%), radial-gradient(circle at 60% 60%, #34c924, transparent 40%); animation-duration: 8s; top: 50%; left: 40%; }
+        .mars { width: 50px; height: 50px; background: radial-gradient(circle, #e17055, #d63031); animation-duration: 10s; top: 50%; left: 45%; }
+        .jupiter { width: 120px; height: 120px; background: radial-gradient(circle, #f5deb3, #d2b48c), radial-gradient(circle at 50% 50%, #f39c12 10%, transparent 30%), radial-gradient(circle at 30% 30%, #f39c12 10%, transparent 30%), radial-gradient(circle at 70% 70%, #f39c12 10%, transparent 30%); animation-duration: 12s; top: 50%; left: 50%; }
+        .saturn { width: 100px; height: 100px; background: radial-gradient(circle, #e3c07b, #d4a24c); animation-duration: 14s; top: 50%; left: 55%; }
+        .uranus { width: 80px; height: 80px; background: radial-gradient(circle, #00aaff, #0077bb); animation-duration: 16s; top: 50%; left: 60%; }
+        .neptune { width: 80px; height: 80px; background: radial-gradient(circle, #3366ff, #0044cc); animation-duration: 18s; top: 50%; left: 65%; }
+
+        @keyframes orbit {
+            0% {
+                transform: rotate(0deg) translateX(300px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(300px) rotate(-360deg);
+            }
+        }
+
+        .info {
+            margin-top: 20px;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .info h3 {
+            margin: 20px 0 10px;
+        }
+
+        .sun-title { color: #f39c12; }
+        .mercury-title { color: #b5b5b5; }
+        .venus-title { color: #e1c699; }
+        .earth-title { color: #2a9df4; }
+        .mars-title { color: #e17055; }
+        .jupiter-title { color: #f5deb3; }
+        .saturn-title { color: #e3c07b; }
+        .uranus-title { color: #00aaff; }
+        .neptune-title { color: #3366ff; }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exploração Espacial</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="">Planetas</a></li>
+                <li><a href="missoes.html">Missões</a></li>  
+            </ul>
+        </nav>
+    </header>
+    <section id="home" class="section">
+        <h2>Bem-vindo ao Universo</h2>
+        <div class="animation-container">
+            <div class="sun"></div>
+            <div class="planet mercury"></div>
+            <div class="planet venus"></div>
+            <div class="planet earth"></div>
+            <div class="planet mars"></div>
+            <div class="planet jupiter"></div>
+            <div class="planet saturn"></div>
+            <div class="planet uranus"></div>
+            <div class="planet neptune"></div>
+        </div>
+        <div class="info">
+            <h3 class="sun-title">Sol</h3>
+            <p>O Sol é a estrela no centro do Sistema Solar. É uma esfera de plasma quente que emite luz e calor devido às reações de fusão nuclear em seu núcleo. Sua massa é 333.000 vezes a da Terra e contém 99,86% da massa total do Sistema Solar. A temperatura na superfície do Sol é de aproximadamente 5.500°C, enquanto no núcleo pode atingir 15 milhões de graus Celsius.</p>
+
+            <h3 class="mercury-title">Mercúrio</h3>
+            <p>Mercúrio é o menor e mais interno planeta do Sistema Solar, orbitando o Sol a cada 88 dias terrestres. Sua superfície é coberta por crateras, e sua temperatura varia drasticamente entre o dia (430°C) e a noite (-180°C). Mercúrio não possui atmosfera significativa para reter o calor, resultando em variações extremas de temperatura. É composto principalmente por uma grande núcleo de ferro, que constitui cerca de 85% de seu raio.</p>
+
+            <h3 class="venus-title">Vênus</h3>
+            <p>Vênus é o segundo planeta a partir do Sol e é o mais semelhante à Terra em tamanho e composição. No entanto, tem uma atmosfera densa composta principalmente de dióxido de carbono, com uma pressão 92 vezes maior que a da Terra e temperaturas superficiais em torno de 465°C. Vênus possui nuvens espessas de ácido sulfúrico e ventos extremamente fortes que circulam o planeta a cada 4 dias terrestres.</p>
+
+            <h3 class="earth-title">Terra</h3>
+            <p>Terra é o terceiro planeta a partir do Sol e o único conhecido por abrigar vida. Tem uma atmosfera rica em oxigênio e água em estado líquido na superfície. A Terra tem um campo magnético que protege o planeta dos ventos solares e uma órbita que permite uma temperatura estável e propícia à vida. A Terra é o lar de uma vasta diversidade de organismos vivos e possui uma geologia dinâmica com placas tectônicas.</p>
+
+            <h3 class="mars-title">Marte</h3>
+            <p>Marte é o quarto planeta a partir do Sol e é conhecido como o Planeta Vermelho devido à sua aparência avermelhada causada pelo óxido de ferro na superfície. Tem a maior montanha do Sistema Solar, Olympus Mons, e um clima que varia de -125°C a 20°C. Marte possui uma atmosfera fina composta principalmente de dióxido de carbono, com ventos que podem gerar tempestades de poeira que cobrem todo o planeta.</p>
+
+            <h3 class="jupiter-title">Júpiter</h3>
+            <p>Júpiter é o maior planeta do Sistema Solar, com uma massa 318 vezes maior que a da Terra. É um gigante gasoso composto principalmente de hidrogênio e hélio. Júpiter possui uma Grande Mancha Vermelha, uma tempestade gigantesca que dura há séculos, e tem pelo menos 79 luas, incluindo Ganimedes, a maior lua do Sistema Solar. O campo magnético de Júpiter é 20.000 vezes mais forte que o da Terra, com auroras intensas nos polos.</p>
+
+            <h3 class="saturn-title">Saturno</h3>
+            <p>Saturno é o sexto planeta a partir do Sol e é famoso por seus anéis impressionantes compostos de gelo e poeira. É um gigante gasoso semelhante a Júpiter, com uma composição predominante de hidrogênio e hélio. Saturno tem 82 luas conhecidas, com Titã sendo a maior delas e possuindo uma atmosfera densa e lagos de metano. A densidade média de Saturno é tão baixa que o planeta flutuaria na água.</p>
+
+            <h3 class="uranus-title">Urano</h3>
+            <p>Urano é o sétimo planeta a partir do Sol e tem uma rotação única que faz com que orbite de lado. É um gigante de gelo composto principalmente de água, amônia e metano. Urano tem um sistema de anéis e 27 luas conhecidas. Sua temperatura média é de -224°C, tornando-o o planeta mais frio do Sistema Solar. Urano possui um campo magnético inclinado em relação ao eixo de rotação, o que causa padrões climáticos incomuns.</p>
+
+            <h3 class="neptune-title">Netuno</h3>
+            <p>Netuno é o oitavo planeta a partir do Sol e é conhecido por seus ventos extremamente fortes, que podem atingir até 2.100 km/h. É um gigante de gelo similar a Urano, com uma atmosfera rica em hidrogênio, hélio e metano, o que lhe dá uma cor azul intensa. Netuno tem 14 luas conhecidas, sendo Tritão a maior delas, que possui gêiseres ativos de nitrogênio líquido. Netuno também tem um sistema de anéis tênues e escuros, compostos de partículas de gelo e poeira.</p>
+        </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const planets = document.querySelectorAll(".planet");
+
+            planets.forEach(planet => {
+                planet.addEventListener("mouseover", () => {
+                    planet.style.transform = "scale(1.2)";
+                });
+
+                planet.addEventListener("mouseout", () => {
+                    planet.style.transform = "scale(1)";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
